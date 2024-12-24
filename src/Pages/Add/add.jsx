@@ -8,7 +8,7 @@ const add = ({url}) => {
 
    
 
-    const [image, setImage] = useState(false);
+    const [image, setImage] = useState(null);
     const [data, setData] = useState({
         name: "",
         description: "",
@@ -30,8 +30,8 @@ const add = ({url}) => {
         formData.append("price",Number(data.price))
         formData.append("category",data.category)
         formData.append("image",image)
-        const response = axios.post(`${url}/api/food/add`,formData)
-        if((await response).data.success){
+        const response = await axios.post(`${url}/api/food/add`,formData)
+        if(response.data.success){
             setData({
                 name: "",
                 description: "",
@@ -41,7 +41,7 @@ const add = ({url}) => {
             setImage(false)
             toast.success("Food Added")
         }else{
-            toast.success((await response).data.message)
+            toast.error(response.data.message)
         }
     }
     return (
