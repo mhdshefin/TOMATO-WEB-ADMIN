@@ -32,7 +32,7 @@
 
 .add-category-price{
     display: flex;
-    gap: 30px;
+    gap: 20px;
 }
 
 .add-category-price select{
@@ -53,4 +53,19 @@
     background-color: black;
     color: #fff;
     cursor: pointer;
+}
+
+@media(max-width:420px){
+        .add-product-name input{
+            width: 80%;
+        }
+        .add-product-description{
+            width: max(40%,225px);
+        }
+        .add-category-price{
+            flex-direction: column;
+        }
+        .add-btn{
+            margin-top: 5px;
+        }
 }
